@@ -1,0 +1,364 @@
+/* components/BookDetailsPage.module.css */
+
+/* Page Wrapper */
+.bookDetailsPage {
+  min-height: 100vh;
+  background-color: var(--gallery-paper-white); /* Pale cream background */
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  color: var(--gallery-dark-brown);
+}
+
+/* Desk Background Effect */
+.deskBackground {
+  background-image: url('/wooden-desk-texture.png'); /* Assuming a wooden desk texture image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4rem;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Deep shadow for desk effect */
+  max-width: 1400px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Book Container (simulates the open book) */
+.bookContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Left (image) smaller, Right (details) larger */
+  gap: 4rem;
+  background-color: var(--gallery-paper-white); /* Paper inside the book */
+  border-radius: 8px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1); /* Inner shadow for open book depth */
+  padding: 3rem;
+  position: relative;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 0.5s;
+}
+
+/* Left Column: Book Cover */
+.leftColumn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align cover to top */
+  padding-top: 1rem;
+}
+
+.bookCoverWrapper {
+  position: relative;
+  width: 280px; /* Fixed width for the cover */
+  height: 400px; /* Fixed height for the cover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Soft shadow for the image */
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.bookCoverWrapper:hover {
+  transform: scale(1.03); /* Slight zoom-in on hover */
+}
+
+.bookCover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Curled Edges Effect (simplified) */
+.curledEdgeTop,
+.curledEdgeBottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 15px; /* Height of the curl */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent); /* Light curl */
+  z-index: 2;
+}
+
+.curledEdgeTop {
+  top: 0;
+  border-radius: 0 0 50% 50%;
+  transform: rotateX(10deg); /* Slight bend */
+}
+
+.curledEdgeBottom {
+  bottom: 0;
+  border-radius: 50% 50% 0 0;
+  transform: rotateX(-10deg); /* Slight bend */
+}
+
+/* Default image for placeholder */
+.bookCover[src*="via.placeholder.com"],
+.bookCover[src*="default-open-book.png"] {
+  background-color: var(--gallery-pale-brown);
+  background-image: url('/default-open-book.png'); /* Placeholder for default book illustration */
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Right Column: Book Details */
+.rightColumn {
+  padding-right: 1rem; /* Spacing from right edge of paper */
+  text-align: left;
+}
+
+.bookTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem; /* Large serif font for title */
+  color: var(--gallery-dark-brown);
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+.bookAuthor {
+  font-family: 'Playfair Display', serif; /* Italic serif */
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--gallery-warm-gray);
+  margin-bottom: 1rem;
+}
+
+.firstPublished {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--gallery-warm-gray);
+  margin-bottom: 2rem;
+  border-bottom: 1px dashed var(--gallery-pale-brown);
+  padding-bottom: 0.5rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gallery-burnt-orange);
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 15px;
+}
+
+.sectionTitle::before {
+  content: '\2014'; /* Em dash */
+  position: absolute;
+  left: 0;
+  color: var(--gallery-pale-brown);
+}
+
+.description,
+.authorBio {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--gallery-dark-brown);
+  text-align: justify;
+}
+
+/* Subject Pills */
+.subjectPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.subjectPill {
+  background-color: var(--gallery-pale-brown); /* Cream background */
+  color: var(--gallery-dark-brown); /* Slightly darker text */
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Author Section */
+.authorName {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--gallery-dark-brown);
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.authorDates {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--gallery-warm-gray);
+  margin-top: 0.5rem;
+}
+
+.quillIllustration {
+  width: 50px;
+  height: 50px;
+  background-image: url('/quill-illustration.png'); /* Placeholder for quill */
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  margin-top: 1rem;
+}
+
+/* Back Button */
+.backButton {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  background-color: var(--gallery-burnt-orange); /* Burnt orange */
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 10;
+}
+
+.backButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .bookContainer {
+    grid-template-columns: 1fr; /* Stacked layout */
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .leftColumn {
+    align-items: center;
+  }
+
+  .bookCoverWrapper {
+    width: 250px;
+    height: 350px;
+  }
+
+  .rightColumn {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .bookTitle {
+    font-size: 2.2rem;
+  }
+
+  .bookAuthor {
+    font-size: 1.1rem;
+  }
+
+  .sectionTitle {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .sectionTitle::before {
+    content: none;
+  }
+
+  .description,
+  .authorBio {
+    text-align: left; /* Keep text justified or left-aligned even if heading is centered */
+  }
+
+  .subjectPills {
+    justify-content: center;
+  }
+
+  .quillIllustration {
+    margin: 1rem auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .bookDetailsPage {
+    padding: 2rem 1rem;
+  }
+
+  .deskBackground {
+    padding: 2rem;
+  }
+
+  .bookCoverWrapper {
+    width: 200px;
+    height: 300px;
+  }
+
+  .bookTitle {
+    font-size: 1.8rem;
+  }
+
+  .bookAuthor {
+    font-size: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1rem;
+  }
+
+  .description,
+  .authorBio {
+    font-size: 0.95rem;
+  }
+
+  .backButton {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .deskBackground {
+    padding: 1.5rem;
+  }
+
+  .bookContainer {
+    padding: 1.5rem;
+  }
+
+  .bookCoverWrapper {
+    width: 180px;
+    height: 280px;
+  }
+
+  .bookTitle {
+    font-size: 1.5rem;
+  }
+
+  .bookAuthor {
+    font-size: 0.9rem;
+  }
+
+  .description,
+  .authorBio {
+    font-size: 0.9rem;
+  }
+} 

@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link'; // Import Link
 import styles from './gallery.module.css';
 
 const GalleryPage = () => {
@@ -55,18 +56,20 @@ const GalleryPage = () => {
         />
       </div>
       <div className={styles.bookGrid}>
-        {books.map(book => (
-          <div key={book.open_library_key} className={styles.bookCard}>
-            <img
-              src={book.image_url.includes('via.placeholder.com') ? '/default-book-cover.png' : book.image_url}
-              alt={book.title}
-              className={styles.bookCover}
-            />
-            <h2 className={styles.bookTitle}>{book.title}</h2>
-            <p className={styles.bookAuthor}>{book.author_name}</p>
-            <p className={styles.bookYear}>{book.first_publish_year}</p>
-          </div>
-        ))}
+        {books.map(book => {
+          return (
+            <Link key={book.open_library_key} href={`/book${book.open_library_key}`} className={styles.bookCard}>
+              <img
+                src={book.image_url.includes('via.placeholder.com') ? '/default-book-cover.png' : book.image_url}
+                alt={book.title}
+                className={styles.bookCover}
+              />
+              <h2 className={styles.bookTitle}>{book.title}</h2>
+              <p className={styles.bookAuthor}>{book.author_name}</p>
+              <p className={styles.bookYear}>{book.first_publish_year}</p>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
