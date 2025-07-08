@@ -1,0 +1,107 @@
+/* components/Navbar.module.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--gallery-paper-white); /* Consistent with gallery page */
+  border-bottom: 1px solid var(--gallery-pale-brown);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbarLeft {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif; /* Elegant serif for logo */
+  font-size: 1.8rem;
+  color: var(--gallery-dark-brown);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--gallery-burnt-orange);
+}
+
+.navbarRight {
+  position: relative;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--gallery-dark-brown);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.hamburger:hover {
+  color: var(--gallery-burnt-orange);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--gallery-paper-white);
+  border: 1px solid var(--gallery-pale-brown);
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  z-index: 1001;
+}
+
+.dropdownItem {
+  padding: 0.8rem 1.2rem;
+  color: var(--gallery-dark-brown);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background-color: var(--gallery-pale-brown);
+  color: var(--gallery-burnt-orange);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .hamburger {
+    font-size: 1.8rem;
+  }
+
+  .dropdownMenu {
+    min-width: 140px;
+  }
+
+  .dropdownItem {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+} 

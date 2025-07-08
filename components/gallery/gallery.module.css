@@ -1,0 +1,282 @@
+/* components/gallery/gallery.module.css */
+
+/* Theme Colors (ensure these are consistent with App.css if global) */
+:root {
+  --gallery-paper-white: #f9f7f4; /* Cozy, cream background */
+  --gallery-pale-brown: #e8dcc0; /* Light brown for accents/borders */
+  --gallery-muted-green: #8fbc8f; /* Muted green accent */
+  --gallery-burnt-orange: peru; /* Burnt orange accent */
+  --gallery-dark-brown: #5d4e37; /* Darker brown for text */
+  --gallery-warm-gray: #8b7355; /* Warm gray for secondary text */
+  --gallery-shadow-color: rgba(0, 0, 0, 0.08); /* Soft shadow */
+}
+
+/* Gallery Page Wrapper */
+.galleryPage {
+  padding: 2rem 2rem; /* Reduced top padding */
+  background-color: var(--gallery-paper-white);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle Paper Texture Background */
+.galleryPage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/paper-texture.png'); /* Assuming a paper texture image */
+  background-repeat: repeat;
+  opacity: 0.3; /* Subtle */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header and Decorative Elements */
+.galleryPage h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem; /* Slightly reduced font size */
+  color: var(--gallery-dark-brown);
+  text-align: center;
+  margin-bottom: 2rem; /* Reduced margin */
+  position: relative;
+  z-index: 1;
+}
+
+/* Search Bar Styles */
+.searchBarContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem; /* Space below header */
+  position: relative;
+  z-index: 1;
+}
+
+.searchBarInput {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid var(--gallery-pale-brown);
+  border-radius: 25px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--gallery-dark-brown);
+  background-color: var(--gallery-paper-white);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.searchBarInput::placeholder {
+  color: var(--gallery-warm-gray);
+  opacity: 0.7;
+}
+
+.searchBarInput:focus {
+  outline: none;
+  border-color: var(--gallery-burnt-orange); /* Highlight on focus */
+  box-shadow: 0 0 0 3px rgba(205, 133, 63, 0.2); /* Soft glow on focus */
+}
+
+/* Loading Animation */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  font-family: 'Inter', sans-serif; /* Clean sans-serif for general text */
+  color: var(--gallery-warm-gray);
+  font-size: 1.2rem;
+}
+
+.pageFlip {
+  width: 80px;
+  height: 60px;
+  border: 4px solid var(--gallery-pale-brown);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  animation: pageFlip 1.5s infinite ease-in-out;
+}
+
+.pageFlip::before,
+.pageFlip::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background-color: var(--gallery-paper-white);
+  transform-origin: left;
+}
+
+.pageFlip::before {
+  background: linear-gradient(to right, var(--gallery-paper-white) 0%, #f0edea 100%);
+  animation: flipBefore 1.5s infinite ease-in-out;
+}
+
+.pageFlip::after {
+  background: linear-gradient(to left, var(--gallery-paper-white) 0%, #f0edea 100%);
+  animation: flipAfter 1.5s infinite ease-in-out;
+  left: 0;
+}
+
+@keyframes pageFlip {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(180deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+@keyframes flipBefore {
+  0%, 100% { transform: rotateY(0deg); }
+  50% { transform: rotateY(-180deg); }
+}
+
+@keyframes flipAfter {
+  0%, 100% { transform: rotateY(0deg); }
+  50% { transform: rotateY(180deg); }
+}
+
+/* Error Alert */
+.errorAlert {
+  background-color: #fcf8e3; /* Light yellow background */
+  border: 1px solid #fbeed5; /* Pale border */
+  border-left: 5px solid #f9e29a; /* Sticky note pin effect */
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 400px;
+  text-align: center;
+  font-family: 'Caveat', cursive; /* Hand-drawn feel */
+  color: var(--gallery-dark-brown);
+  box-shadow: 2px 2px 8px var(--gallery-shadow-color);
+  transform: rotate(2deg); /* Slight tilt for sticky note */
+}
+
+.errorAlert p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Book Grid */
+.bookGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Book Card */
+.bookCard {
+  background-color: var(--gallery-paper-white);
+  border-radius: 8px;
+  box-shadow: 0 5px 15px var(--gallery-shadow-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 1rem; /* Space for text below image */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.bookCard:hover {
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 0 4px var(--gallery-burnt-orange); /* Soft glow */
+}
+
+/* Book Cover */
+.bookCover {
+  width: 100%;
+  height: 220px; /* Reduced fixed height for covers */
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Default image for placeholder */
+.bookCover[src*="via.placeholder.com"] {
+  background-color: var(--gallery-pale-brown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: var(--gallery-warm-gray);
+  /* For an open book/sketch-style cover, you'd use a background-image here */
+  background-image: url('/default-open-book.png'); /* Placeholder for default book illustration */
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bookTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; /* Reduced font size */
+  color: var(--gallery-dark-brown);
+  margin: 0.8rem 0.5rem 0.2rem; /* Adjusted margin */
+  line-height: 1.2;
+}
+
+.bookAuthor {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem; /* Reduced font size */
+  color: var(--gallery-warm-gray);
+  margin-bottom: 0.1rem; /* Adjusted margin */
+}
+
+.bookYear {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem; /* Reduced font size */
+  color: var(--gallery-warm-gray);
+  opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .galleryPage {
+    padding: 1.5rem 1rem; /* Further reduced padding */
+  }
+
+  .galleryPage h1 {
+    font-size: 2rem;
+  }
+
+  .searchBarInput {
+    max-width: 90%;
+  }
+
+  .bookGrid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Adjusted minmax for smaller screens */
+    gap: 0.8rem;
+  }
+
+  .bookCover {
+    height: 180px; /* Adjusted height for smaller screens */
+  }
+
+  .bookTitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .galleryPage h1 {
+    font-size: 1.8rem;
+  }
+
+  .bookGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bookCover {
+    height: 250px; /* Adjusted height for very small screens */
+  }
+} 

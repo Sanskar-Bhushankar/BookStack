@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 
 // Hero Section Component
 const HeroSection = () => {
@@ -27,7 +28,9 @@ const HeroSection = () => {
           </p>
           <div className="hero-buttons">
             <button className="btn-primary">Start Your Library</button>
-            <button className="btn-secondary">Explore Books</button>
+            <Link href="/gallery">
+              <button className="btn-secondary">Explore Books</button>
+            </Link>
           </div>
         </div>
 
