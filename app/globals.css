@@ -76,6 +76,15 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Gallery Theme Colors */
+  --gallery-paper-white: #f9f7f4;
+  --gallery-pale-brown: #e8dcc0;
+  --gallery-muted-green: #8fbc8f;
+  --gallery-burnt-orange: peru;
+  --gallery-dark-brown: #5d4e37;
+  --gallery-warm-gray: #8b7355;
+  --gallery-shadow-color: rgba(0, 0, 0, 0.08);
 }
 
 .dark {

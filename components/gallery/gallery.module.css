@@ -1,15 +1,7 @@
 /* components/gallery/gallery.module.css */
 
 /* Theme Colors (ensure these are consistent with App.css if global) */
-:root {
-  --gallery-paper-white: #f9f7f4; /* Cozy, cream background */
-  --gallery-pale-brown: #e8dcc0; /* Light brown for accents/borders */
-  --gallery-muted-green: #8fbc8f; /* Muted green accent */
-  --gallery-burnt-orange: peru; /* Burnt orange accent */
-  --gallery-dark-brown: #5d4e37; /* Darker brown for text */
-  --gallery-warm-gray: #8b7355; /* Warm gray for secondary text */
-  --gallery-shadow-color: rgba(0, 0, 0, 0.08); /* Soft shadow */
-}
+/* Removed :root block from here as it's now in app/globals.css */
 
 /* Gallery Page Wrapper */
 .galleryPage {
