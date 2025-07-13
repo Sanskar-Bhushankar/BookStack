@@ -11,7 +11,7 @@ const GalleryPage = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch('https://book-stack-backend.onrender.com/gallery');
+        const response = await fetch('https://book-stack-backend-production.up.railway.app/gallery');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

@@ -2,9 +2,30 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { useRouter } from 'next/navigation';
 
 // Hero Section Component
 const HeroSection = () => {
+  const router = useRouter();
+  const handleStartLibraryClick = async () => {
+    try {
+      const response = await fetch('https://book-stack-backend-production.up.railway.app/auth/check-session', {
+        credentials: 'include' // Essential for sending cookies with cross-origin requests
+      });
+      if (response.ok) {
+        // User is logged in
+        router.push('/profile');
+      } else {
+        // User is not logged in
+        router.push('/signup');
+      }
+    } catch (error) {
+      console.error("Error checking session:", error);
+      // In case of network error or other issues, redirect to signup as a fallback
+      router.push('/signup');
+    }
+  };
+
   return (
     <section className="hero-section">
       <div className="hero-background">
@@ -27,7 +48,7 @@ const HeroSection = () => {
             library.
           </p>
           <div className="hero-buttons">
-            <button className="btn-primary">Start Your Library</button>
+            <button className="btn-primary" onClick={handleStartLibraryClick}>Start Your Library</button>
             <Link href="/gallery">
               <button className="btn-secondary">Explore Books</button>
             </Link>

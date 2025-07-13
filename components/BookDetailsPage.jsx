@@ -21,7 +21,7 @@ const BookDetailsPage = ({ openLibraryKey }) => {
       const bookId = openLibraryKey.startsWith('/works/') ? openLibraryKey.substring('/works/'.length) : openLibraryKey;
 
       try {
-        const response = await fetch(`https://book-stack-backend.onrender.com/gallery/works/${bookId}`);
+        const response = await fetch(`https://book-stack-backend-production.up.railway.app/gallery/works/${bookId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

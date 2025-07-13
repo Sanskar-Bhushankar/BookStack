@@ -1,0 +1,107 @@
+.authContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--gallery-paper-white);
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--gallery-dark-brown);
+}
+
+.authTitle {
+  font-family: 'Crimson Text', serif;
+  font-size: 2.5rem;
+  color: var(--gallery-burnt-orange);
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.authForm {
+  background-color: #fff;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px solid var(--gallery-pale-brown);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.authLabel {
+  font-weight: 600;
+  color: var(--gallery-warm-gray);
+  font-size: 0.95rem;
+}
+
+.authInput {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--gallery-pale-brown);
+  border-radius: 6px;
+  font-size: 1rem;
+  color: var(--gallery-dark-brown);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.authInput:focus {
+  border-color: var(--gallery-burnt-orange);
+  box-shadow: 0 0 0 3px rgba(205, 133, 63, 0.2);
+  outline: none;
+}
+
+.authButton {
+  background-color: var(--gallery-burnt-orange);
+  color: var(--gallery-paper-white);
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.authButton:hover {
+  background-color: #e08e48; /* Slightly darker orange */
+  transform: translateY(-2px);
+}
+
+.authButton:disabled {
+  background-color: var(--gallery-pale-brown);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.errorMessage {
+  color: #d9534f; /* A standard error red */
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+}
+
+.authSwitchText {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--gallery-warm-gray);
+}
+
+.authLink {
+  color: var(--gallery-burnt-orange);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.authLink:hover {
+  color: #e08e48;
+  text-decoration: underline;
+} 

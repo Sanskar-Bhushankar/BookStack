@@ -1,0 +1,59 @@
+read the  @bookstack api json  this is backend api we are gona use for making new pages 
+the pages we need are signuppage,login page and empty profile page
+for the signup page the api call is
+post @https://book-stack-backend.onrender.com/auth/signup 
+and we send json as
+    {
+      "username": "sanskar1",
+      "email": "sanskar1@gmail.com",
+      "password": "Sanskar@123"
+    }
+this 3 key textbox should be there username,email,passowrd
+and we get response as
+{
+    "message": "User registered and logged in successfully!",
+    "user": {
+        "id": "a7828cb5-dadd-4e1b-ae63-8cd0a64f56e3",
+        "email": "sanskar2@gmail.com",
+        "username": "sanskar2"
+    }
+}
+and we get cookies as
+
+Cookie_1
+value
+book-stack-backend.onrender.com
+/
+Wed, 08 Jul 2026 17:07:21 GMT
+false
+false
+connect.sid
+s%3AQRY4a0cFRUmN2n7yLmwIrhc7-9qQprJr.%2BywJWeOAc6OPinJWj2AJKQDp%2Bg1Wm6EeG8WdvJGlI7U
+book-stack-backend.onrender.com
+/
+Mon, 14 Jul 2025 15:28:07 GMT
+true
+false
+
+now when user signup then send him to blank profile page
+when user logs in it goes through this route
+post @https://book-stack-backend.onrender.com/auth/login 
+we send json as
+{
+    "email":"sanskarsrb@gmail.com",
+    "password":"Sanskar@123"
+}
+that is only email password
+we get reponse as 
+{
+    "message": "Logged in successfully!",
+    "user": {
+        "id": "9b7d5432-4eea-4c25-8827-092c75066a99",
+        "email": "sanskarsrb@gmail.com",
+        "username": "sanskar"
+    }
+}
+and also we get cookie so maintain session
+now without changing anything in the landing page
+only the start library button on the page on clicking if the user is logged in then throw to blank profile page else send him to signup page in signup keep username email password text box submit button and a text with "already have an account? sign in" with href sending singin text to sign in oage 
+make sure u match the ui which we are doing in whole project
