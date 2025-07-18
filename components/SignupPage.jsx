@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import styles from './Auth.module.css'; // Using a shared Auth.module.css
+import styles from './Auth.module.css';
 
 const SignupPage = () => {
   const [username, setUsername] = useState('');
@@ -19,13 +19,13 @@ const SignupPage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('https://book-stack-backend.onrender.com/auth/signup', {
+      const response = await fetch('https://book-stack-backend-production.up.railway.app/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, email, password }),
-        credentials: 'include' // Ensure cookies are handled
+        credentials: 'include'
       });
 
       if (!response.ok) {
@@ -35,7 +35,6 @@ const SignupPage = () => {
 
       const data = await response.json();
       console.log('Signup successful:', data);
-      // Redirect to profile page on successful signup
       router.push('/profile');
     } catch (err) {
       setError(err.message || 'An unexpected error occurred.');

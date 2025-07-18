@@ -72,6 +72,28 @@
   box-shadow: 0 0 0 3px rgba(205, 133, 63, 0.2); /* Soft glow on focus */
 }
 
+.searchButton {
+  background-color: var(--gallery-burnt-orange);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.8rem 1.5rem;
+  margin-left: -45px; /* Overlap the input */
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.searchButton:hover {
+  background-color: #d2691e; /* Darker orange */
+}
+
+.searchButton:disabled {
+  background-color: var(--gallery-pale-brown);
+  cursor: not-allowed;
+}
+
 /* Loading Animation */
 .loadingContainer {
   display: flex;
@@ -152,6 +174,24 @@
 .errorAlert p {
   margin: 0;
   font-size: 1.1rem;
+}
+
+/* Empty State for No Results */
+.emptyState {
+  text-align: center;
+  padding: 3rem;
+  margin-top: 2rem;
+}
+
+.emptyState h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--gallery-dark-brown);
+}
+
+.emptyState p {
+  font-size: 1rem;
+  color: var(--gallery-warm-gray);
 }
 
 /* Book Grid */

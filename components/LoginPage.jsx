@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import styles from './Auth.module.css'; // Using a shared Auth.module.css
+import { useRouter }from 'next/navigation';
+import styles from './Auth.module.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -24,7 +24,7 @@ const LoginPage = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
-        credentials: 'include' // Ensure cookies are handled
+        credentials: 'include'
       });
 
       if (!response.ok) {
@@ -34,7 +34,6 @@ const LoginPage = () => {
 
       const data = await response.json();
       console.log('Login successful:', data);
-      // Redirect to profile page on successful login
       router.push('/profile');
     } catch (err) {
       setError(err.message || 'An unexpected error occurred.');
